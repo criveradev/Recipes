@@ -14,3 +14,9 @@
 
 # Creamos una migracion
     % php artisan make:migration create_recipe_tag_table 
+
+# Migramos nuestra DB
+    % php artisan migrate
+
+# Migramos las tablas y sus datos falsos
+    % php artisan migrate:fresh --seed
