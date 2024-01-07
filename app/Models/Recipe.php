@@ -9,7 +9,19 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    #Una receta puede tener muchas etiquetas
+    #Una categoria pertenece a una receta.
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    #Una receta pertenece a un usuario.
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    #Una receta puede tener muchas etiquetas.
     public function tags()
     {
         return $this->belongsToMany(Tag::class);

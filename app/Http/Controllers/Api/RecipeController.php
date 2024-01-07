@@ -10,11 +10,12 @@ class RecipeController extends Controller
 {
     public function index()
     {
-        return Recipe::all();
+        #Muestrame las recetas junto con su categoria, etiqueta, usuario.
+        return Recipe::with('category','tags','user')->get();
     }
 
     public function show(Recipe $recipe)
     {
-        return $recipe;
+        return $recipe->load('category','tags','user');
     }
 }
