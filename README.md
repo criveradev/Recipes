@@ -20,3 +20,10 @@
 
 # Migramos las tablas y sus datos falsos
     % php artisan migrate:fresh --seed
+
+# Controladores
+    % php artisan make:controller Api/CategoryController 
+    % php artisan make:controller Api/RecipeController 
+    % php artisan make:controller Api/TagController 
+
+# Configuramos las rutas
