@@ -22,7 +22,6 @@ class CategoryController extends Controller
     {
         $category = $category->load('recipes');
 
-        // Retorna el recurso usando la clase Resource
         return new CategoryResource($category);
     }
 }

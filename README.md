@@ -48,3 +48,5 @@
 
     % php artisan make:resource CategoryResource
     % php artisan make:resource CategoryCollection
+    % php artisan make:resource TagResource
+    % php artisan make:resource RecipeResource
