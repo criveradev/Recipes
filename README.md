@@ -50,3 +50,9 @@
     % php artisan make:resource CategoryCollection
     % php artisan make:resource TagResource
     % php artisan make:resource RecipeResource
+
+# Para verificar el rendimiento de la API
+
+    % composer require laravel/telescope
+    % php artisan telescope:install
+    % php artisan migrate
