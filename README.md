@@ -26,18 +26,25 @@
 
 # Configuramos las rutas
 
-   % Route::get('recipes',               [RecipeController::class, 'index']);
-   % Route::post('recipes',              [RecipeController::class, 'store']);
-   % Route::get('recipes/{recipe}',      [RecipeController::class, 'show']);
-   % Route::put('recipes/{recipe}',      [RecipeController::class, 'update']);
-   % Route::delete('recipes/{recipe}',   [RecipeController::class, 'destroy']);
+    % Route::get('recipes',               [RecipeController::class, 'index']);
+    % Route::post('recipes',              [RecipeController::class, 'store']);
+    % Route::get('recipes/{recipe}',      [RecipeController::class, 'show']);
+    % Route::put('recipes/{recipe}',      [RecipeController::class, 'update']);
+    % Route::delete('recipes/{recipe}',   [RecipeController::class, 'destroy']);
 
 # Visualizar las rutas que hemos creado (endpoint)
+
     % php artisan route:list --path=api
 
 # Definimos el alcance que tendra nuestra API en su controlador respectivo
+
     % index
     % store
     % show
     % update
     % destroy
+
+# Consistencia entre endpoints: recursos y colecciones
+
+    % php artisan make:resource CategoryResource
+    % php artisan make:resource CategoryCollection
