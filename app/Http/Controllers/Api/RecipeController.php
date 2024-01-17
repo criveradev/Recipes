@@ -6,20 +6,27 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipeResource;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RecipeController extends Controller
 {
     public function index()
     {
+
         $recipes = Recipe::with('category', 'tags', 'user')->get();
 
         return RecipeResource::collection($recipes);
-        
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        # code...
+        $recipe = Recipe::create($request->all());
+
+        if ($tags = json_decode($request->tags)) {
+            $recipe->tags()->attach($tags);
+        }
+
+        return response()->json(new RecipeResource($recipe), Response::HTTP_CREATED);
     }
 
     public function show(Recipe $recipe)
@@ -28,12 +35,21 @@ class RecipeController extends Controller
         return new RecipeResource($recipe);
     }
 
-    public function update()
+    public function update(Request $request, Recipe $recipe)
     {
-        # code...
+        $recipe->update($request->all());
+
+        if ($tags = json_decode($request->tags)) {
+            $recipe->tags()->attach($tags);
+        }
+
+        return response()->json(new RecipeResource($recipe), Response::HTTP_OK);
     }
-    public function destroy()
+
+    public function destroy(Recipe $recipe)
     {
-        # code...
+        $recipe->delete();
+
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
