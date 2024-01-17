@@ -56,3 +56,12 @@
     % composer require laravel/telescope
     % php artisan telescope:install
     % php artisan migrate
+
+# Vamos a aislar las validaciones
+
+    % php artisan make:request StoreRecipeRequest
+    % php artisan make:request UpdateRecipeRequest
+
+# Deshabilitar depurador como dev
+
+    % env. -> APP_DEBUG = false
