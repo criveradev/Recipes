@@ -82,4 +82,8 @@
 
 # Creacion login usuario
 
-    & php artisan make:controller LoginController
+    % php artisan make:controller LoginController
+
+# Politicas de acceso
+
+    % php artisan make:policy RecipePolicy
