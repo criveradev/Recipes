@@ -12,7 +12,6 @@ class Recipe extends Model
     #Propiedad de asignacion de datos masiva
     protected $fillable = [
         'category_id',
-        'user_id',
         'title',
         'description',
         'ingredients',
