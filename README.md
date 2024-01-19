@@ -65,3 +65,17 @@
 # Deshabilitar depurador como dev
 
     % env. -> APP_DEBUG = false
+
+# Autorizacion: Tokens & Middlewares
+
+    % composer require laravel/sanctum
+
+# Crear Tokens
+
+    % php artisan tinker
+    > $user = App\Models\User::find(5);
+    > $user->createToken('app');
+
+# Eliminar Tokens
+
+    % $user->tokens()->delete();
