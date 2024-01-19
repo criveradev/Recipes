@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\RecipeController;
 use App\Http\Controllers\Api\TagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+
+#Ruta de inicio de sesion como invitado
+Route::get('login',[LoginController::class,'store']);
 
 #Proteccion de las rutas
 Route::middleware('auth:sanctum')->group(function () {

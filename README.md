@@ -79,3 +79,7 @@
 # Eliminar Tokens
 
     % $user->tokens()->delete();
+
+# Creacion login usuario
+
+    & php artisan make:controller LoginController
