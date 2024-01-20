@@ -87,3 +87,19 @@
 # Politicas de acceso
 
     % php artisan make:policy RecipePolicy
+
+# Antes de hacer testing debes habilitar la base de datos fake
+
+    > phpunit.xml
+            > <env name="DB_CONNECTION" value="sqlite"/>
+            > <env name="DB_DATABASE" value=":memory:"/>
+
+# Testing
+
+    % php artisan make:test CategoryTest
+    % php artisan make:test TagTest
+    % php artisan make:test RecipeTest
+
+# Prueba de test creados
+
+    % php artisan test
