@@ -23,13 +23,14 @@ class CategoryTest extends TestCase
 
         #Respuesta
         $response = $this->getJson('/api/categories');
-        $response->assertJsonCount(2, 'data')
-            ->assertJsonStructure([
+        $response->assertStatus(Response::HTTP_OK) //Cuando nos conectamos a index esperamos un 200?
+            ->assertJsonCount(2, 'data') //Cuando recibimos la respuesta son dos elementos?
+            ->assertJsonStructure([ //Cuando recibimos la estructura es identica a la siguiente?
                 'data' => [
                     [
-                    'id',
-                    'type',
-                    'attributes' => ['name']
+                        'id',
+                        'type',
+                        'attributes' => ['name']
                     ]
                 ]
             ]);
@@ -44,7 +45,7 @@ class CategoryTest extends TestCase
         $category = Category::factory()->create();
 
         #Respuesta
-        $response = $this->getJson('/api/categories/'.$category->id);
+        $response = $this->getJson('/api/categories/' . $category->id);
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [
