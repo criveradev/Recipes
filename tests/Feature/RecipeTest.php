@@ -4,15 +4,18 @@ namespace Tests\Feature;
 
 use App\Models\Category;
 use App\Models\Recipe;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
 
 class RecipeTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
 
     public function test_index()
     {
@@ -37,6 +40,30 @@ class RecipeTest extends TestCase
                     ]
                 ]
             ]);
+    }
+
+    public function test_store()
+    {
+        #Crea un usuario, categoria, etiqueta
+        Sanctum::actingAs(User::factory()->create());
+
+        $category = Category::factory()->create();
+        $tag = Tag::factory()->create();
+
+        $data = [
+            'category_id'  => $category->id,
+            'title'        => $this->faker->sentence,
+            'description'  => $this->faker->paragraph,
+            'ingredients'  => $this->faker->text,
+            'instructions' => $this->faker->text,
+            'tags'         => $tag->id,
+            'image'        => UploadedFile::fake()->image('recipe.png'),
+
+        ];
+
+        #Respuesta
+        $response = $this->postJson('/api/recipes/', $data);
+        $response->assertStatus(Response::HTTP_CREATED);
     }
 
     public function test_show()
