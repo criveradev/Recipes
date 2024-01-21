@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers\Api\V1;
 
 use App\Models\Tag;
 use App\Models\User;
@@ -22,7 +22,7 @@ class TagTest extends TestCase
         $tags = Tag::factory(2)->create();
 
         #Respuesta
-        $response = $this->getJson('/api/tags');
+        $response = $this->getJson('/api/V1/tags');
         $response->assertStatus(Response::HTTP_OK) //Cuando nos conectamos a index esperamos un 200?
             ->assertJsonCount(2, 'data') //Cuando recibimos la respuesta son dos elementos?
             ->assertJsonStructure([ //Cuando recibimos la estructura es identica a la siguiente?
@@ -48,7 +48,7 @@ class TagTest extends TestCase
         $tag = Tag::factory()->create();
 
         #Respuesta
-        $response = $this->getJson('/api/tags/' . $tag->id);
+        $response = $this->getJson('/api/V1/tags/' . $tag->id);
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [

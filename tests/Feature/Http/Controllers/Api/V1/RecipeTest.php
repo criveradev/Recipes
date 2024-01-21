@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers\Api\V1;
 
 use App\Models\Category;
 use App\Models\Recipe;
@@ -28,7 +28,7 @@ class RecipeTest extends TestCase
         $recipes = Recipe::factory(2)->create();
 
         #Respuesta
-        $response = $this->getJson('/api/recipes');
+        $response = $this->getJson('/api/V1/recipes');
         $response->assertStatus(Response::HTTP_OK) //Cuando nos conectamos a index esperamos un 200?
             ->assertJsonCount(2, 'data') //Cuando recibimos la respuesta son dos elementos?
             ->assertJsonStructure([ //Cuando recibimos la estructura es identica a la siguiente?
@@ -62,7 +62,7 @@ class RecipeTest extends TestCase
         ];
 
         #Respuesta
-        $response = $this->postJson('/api/recipes/', $data);
+        $response = $this->postJson('/api/V1/recipes/', $data);
         $response->assertStatus(Response::HTTP_CREATED);
     }
 
@@ -77,7 +77,7 @@ class RecipeTest extends TestCase
         $recipe = Recipe::factory()->create();
 
         #Respuesta
-        $response = $this->getJson('/api/recipes/' . $recipe->id);
+        $response = $this->getJson('/api/V1/recipes/' . $recipe->id);
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [
@@ -105,7 +105,7 @@ class RecipeTest extends TestCase
         ];
 
         #Respuesta
-        $response = $this->putJson('/api/recipes/' . $recipe->id, $data);
+        $response = $this->putJson('/api/V1/recipes/' . $recipe->id, $data);
         $response->assertStatus(Response::HTTP_OK);
 
         $this->assertDatabaseHas('recipes', [
@@ -122,7 +122,7 @@ class RecipeTest extends TestCase
         #Crea una receta
         $recipe = Recipe::factory()->create();
 
-        $response = $this->deleteJson('/api/recipes/' . $recipe->id);
+        $response = $this->deleteJson('/api/V1/recipes/' . $recipe->id);
         $response->assertStatus(Response::HTTP_NO_CONTENT);
     }
 }

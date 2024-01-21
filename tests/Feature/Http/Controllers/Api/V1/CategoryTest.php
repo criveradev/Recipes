@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers\Api\V1;
 
 use App\Models\Category;
 use App\Models\User;
@@ -22,7 +22,7 @@ class CategoryTest extends TestCase
         $categories = Category::factory(2)->create();
 
         #Respuesta
-        $response = $this->getJson('/api/categories');
+        $response = $this->getJson('/api/V1/categories');
         $response->assertStatus(Response::HTTP_OK) //Cuando nos conectamos a index esperamos un 200?
             ->assertJsonCount(2, 'data') //Cuando recibimos la respuesta son dos elementos?
             ->assertJsonStructure([ //Cuando recibimos la estructura es identica a la siguiente?
@@ -45,7 +45,7 @@ class CategoryTest extends TestCase
         $category = Category::factory()->create();
 
         #Respuesta
-        $response = $this->getJson('/api/categories/' . $category->id);
+        $response = $this->getJson('/api/V1/categories/' . $category->id);
         $response->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure([
                 'data' => [

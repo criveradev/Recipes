@@ -20,9 +20,9 @@
 
 # Controladores
 
-    % php artisan make:controller Api/CategoryController 
-    % php artisan make:controller Api/RecipeController 
-    % php artisan make:controller Api/TagController 
+    % php artisan make:controller Api/V1/CategoryController 
+    % php artisan make:controller Api/V1/RecipeController 
+    % php artisan make:controller Api/V1/TagController 
 
 # Configuramos las rutas
 
@@ -96,9 +96,9 @@
 
 # Testing
 
-    % php artisan make:test CategoryTest
-    % php artisan make:test TagTest
-    % php artisan make:test RecipeTest
+    % php artisan make:test /Http/Controllers/Api/V1/CategoryTest 
+    % php artisan make:test /Http/Controllers/Api/V1/TagTest
+    % php artisan make:test /Http/Controllers/Api/V1/RecipeTest
 
 # Prueba de test creados
 
