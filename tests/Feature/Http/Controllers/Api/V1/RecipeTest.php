@@ -57,7 +57,7 @@ class RecipeTest extends TestCase
             'ingredients'  => $this->faker->text,
             'instructions' => $this->faker->text,
             'tags'         => $tag->id,
-            'image'        => UploadedFile::fake()->image('recipe.png'),
+            'image'        => UploadedFile::fake()->image('recipe.jpeg'),
 
         ];
 

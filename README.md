@@ -24,6 +24,10 @@
     % php artisan make:controller Api/V1/RecipeController 
     % php artisan make:controller Api/V1/TagController 
 
+    % php artisan make:controller Api/V2/CategoryController 
+    % php artisan make:controller Api/V2/RecipeController 
+    % php artisan make:controller Api/V2/TagController
+
 # Configuramos las rutas
 
     % Route::get('recipes',               [RecipeController::class, 'index']);
@@ -99,6 +103,10 @@
     % php artisan make:test /Http/Controllers/Api/V1/CategoryTest 
     % php artisan make:test /Http/Controllers/Api/V1/TagTest
     % php artisan make:test /Http/Controllers/Api/V1/RecipeTest
+
+    % php artisan make:test /Http/Controllers/Api/V2/CategoryTest 
+    % php artisan make:test /Http/Controllers/Api/V2/TagTest
+    % php artisan make:test /Http/Controllers/Api/V2/RecipeTest
 
 # Prueba de test creados
 
